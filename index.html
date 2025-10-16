@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Datos - Portafolio Personal</title>
+    <!-- Enlace a Google Fonts para una tipografía moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        header .logo {
+            width: 100px;
+            height: auto;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #ffffff;
+            margin-bottom: 30px;
+        }
+        
+        .hero h2 {
+            font-family: 'Roboto', sans-serif;
+            color: #007bff;
+        }
+        
+        .about-section {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #e9ecef;
+            margin: 20px auto;
+            max-width: 800px;
+            flex-wrap: wrap;
+        }
+        
+        .about-section img {
+            width: 200px;
+            height: auto;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        
+        .about-section .bio {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .weeks-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #e9ecef;
+        }
+        
+        .week-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .week-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .week-card h3 {
+            color: #007bff;
+            margin: 10px 0;
+        }
+        
+        .preview-section {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        table, th, td {
+            border: 1px solid #dee2e6;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px auto;
+            display: block;
+        }
+        
+        button:hover {
+            background-color: #218838;
+        }
+        
+        button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="IMG/logoupla.png" alt="Tu Logo" class="logo">
+        <h1>Base de Datos II - Portafolio Personal</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Semanas</a></li>
+                <li><a href="#">Descargas</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h2>Explora y descarga datos por semanas</h2>
+        <p>Selecciona una semana para ver una previsualización y descargar los datos en formato PDF. ¡Fácil y rápido!</p>
+    </section>
+    
+    <section class="about-section">
+        <img src="IMG/personal" alt="Foto Personal">
+        <div class="bio">
+            <h3>Acerca de mí</h3>
+            <p>
+                Hola, soy Richard Alejandro Gamboa Fernandez , un estudiante de la carrera de ingenieria de sistemas que le gusta enfatizarce en la dinamica de sistemas y comprensio de esta misma ¡Gracias por visitar mi portafolio!
+            </p>
+        </div>
+    </section>
+    
+    <section class="weeks-section">
+        <h2>Selecciona una Semana</h2>
+        <div class="week-card" onclick="showPreview(1)"> <h3>Semana 1</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(2)"> <h3>Semana 2</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(3)"> <h3>Semana 3</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(4)"> <h3>Semana 4</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(5)"> <h3>Semana 5</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(6)"> <h3>Semana 6</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(7)"> <h3>Semana 7</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(8)"> <h3>Semana 8</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(9)"> <h3>Semana 9</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(10)"> <h3>Semana 10</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(11)"> <h3>Semana 11</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(12)"> <h3>Semana 12</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(13)"> <h3>Semana 13</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(14)"> <h3>Semana 14</h3> <p>Ver previsualización</p> </div>
+        <div class="week-card" onclick="showPreview(15)"> <h3>Semana 15</h3> <p>Ver previsualización</p> </div>
+    </section>
+    
+    <section class="preview-section" id="preview">
+        <h3>Previsualización de Datos</h3>
+    </section>
+    
+    <button id="downloadButton" onclick="downloadData()" disabled>Descargar Datos</button>
+    
+    <footer>
+        <p>&copy; 2025 Base de Datos Portafolio. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        const data = {
+            1: [
+                { id: 1, name: 'Producto A', value: 100 },
+                { id: 2, name: 'Producto B', value: 200 },
+                { id: 3, name: 'Producto C', value: 150 }
+            ],
+            2: [
+                { id: 1, name: 'Servicio X', value: 300 },
+                { id: 2, name: 'Servicio Y', value: 400 }
+            ],
+            3: [
+                { id: 1, name: 'Item D', value: 500 },
+                { id: 2, name: 'Item E', value: 600 },
+                { id: 3, name: 'Item F', value: 700 }
+            ],
+            4: [
+                { id: 1, name: 'Item G', value: 800 },
+                { id: 2, name: 'Item H', value: 900 }
+            ],
+            5: [
+                { id: 1, name: 'Producto I', value: 1000 },
+                { id: 2, name: 'Producto J', value: 1100 }
+            ],
+            6: [
+                { id: 1, name: 'Servicio K', value: 1200 },
+                { id: 2, name: 'Servicio L', value: 1300 },
+                { id: 3, name: 'Servicio M', value: 1400 }
+            ],
+            7: [
+                { id: 1, name: 'Item N', value: 1500 },
+                { id: 2, name: 'Item O', value: 1600 }
+            ],
+            8: [
+                { id: 1, name: 'Producto P', value: 1700 },
+                { id: 2, name: 'Producto Q', value: 1800 },
+                { id: 3, name: 'Producto R', value: 1900 }
+            ],
+            9: [
+                { id: 1, name: 'Servicio S', value: 2000 }
+            ],
+            10: [
+                { id: 1, name: 'Item T', value: 2100 },
+                { id: 2, name: 'Item U', value: 2200 }
+            ],
+            11: [
+                { id: 1, name: 'Producto V', value: 2300 },
+                { id: 2, name: 'Producto W', value: 2400 }
+            ],
+            12: [
+                { id: 1, name: 'Servicio X', value: 2500 },
+                { id: 2, name: 'Servicio Y', value: 2600 }
+            ],
+            13: [
+                { id: 1, name: 'Item Z', value: 2700 }
+            ],
+            14: [
+                { id: 1, name: 'Producto AA', value: 2800 },
+                { id: 2, name: 'Producto BB', value: 2900 }
+            ],
+            15: [
+                { id: 1, name: 'Servicio CC', value: 3000 },
+                { id: 2, name: 'Servicio DD', value: 3100 },
+                { id: 3, name: 'Servicio EE', value: 3200 }
+            ]
+        };
+        
+        function showPreview(week) {
+            const previewSection = document.getElementById('preview');
+            const downloadButton = document.getElementById('downloadButton');
+            
+            if (week && data[week]) {
+                let tableHTML = '<h4>Datos de la Semana ' + week + '</h4>';
+                tableHTML += '<table>';
+                tableHTML += '<tr><th>ID</th><th>Nombre</th><th>Valor</th></tr>';
+                data[week].forEach(item => {
+                    tableHTML += `<tr><td>${item.id}</td><td>${item.name}</td><td>${item.value}</td></tr>`;
+                });
+                tableHTML += '</table>';
+                previewSection.innerHTML = tableHTML;
+                downloadButton.disabled = false;
+                downloadButton.onclick = () => downloadData(week);
+            }
+        }
+        
+        function downloadData(week) {
+            if (week && data[week]) {
+                let csvContent = "ID,Nombre,Valor\n";
+                data[week].forEach(item => {
+                    csvContent += `${item.id},${item.name},${item.value}\n`;
+                });
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', `datos_semana_${week}.csv`);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    </script>
+</body>
+</html>
